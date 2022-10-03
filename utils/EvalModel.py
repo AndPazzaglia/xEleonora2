@@ -1,12 +1,10 @@
 #%%
 import os
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer
 
-# model binaries is splitted in multiple files
-# bysp.split_file(whole=os.path.join("models", "gpt2-poetries", "pytorch_model.bin"), split_count=8)
-
-def EvalModel(modelname, author_name, input_words, out_lines_number, temperature):
-    model=os.path.join("models", modelname)
-    pipe = pipeline("text-generation", model=model)
+def EvalModel(modelname, input_words, author_name=None, out_lines_number=None, temperature=None):
+    model = os.path.join("models", modelname)
+    tokenizer = AutoTokenizer.from_pretrained("GroNLP/gpt2-small-italian")
+    pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
     result = pipe(input_words)[0]['generated_text']
     return result
