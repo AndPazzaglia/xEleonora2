@@ -3,6 +3,7 @@ from tensorflow.keras.models import load_model
 from utils.EvalModel import EvalModel
 import os
 import pickle
+import bysp
 
 
 # initial impagination
@@ -21,9 +22,13 @@ st.sidebar.write(
 # authors = list(dict.fromkeys(authors))
 # selected_author = st.sidebar.selectbox('Select the author style', authors, index=1)
 # text input
-input_words = st.sidebar.text_input('Write initial words of the poetry', value="Il tuo sorriso")
+input_words = st.sidebar.text_input('Write initial words of the poetry', value="Il tuo sorriso è come")
 # out_lines_number = st.sidebar.slider('Select the number of lines of the poetry', min_value=1, max_value=50, value=13, step=1)
 # temperature = st.sidebar.slider('Select the model temperature (higher leads to more variable results)', min_value=0.0, max_value=1.0, value=0.5, step=0.1)
+
+# load model
+modelpath = os.path.join("models", "gpt2-poetries", "pytorch_model.bin")
+bysp.combine_file(modelpath)
 
 if st.sidebar.button('Run model'):
     # load model
