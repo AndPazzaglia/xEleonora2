@@ -1,2 +1,3 @@
 tokenization/W2V.kv.vectors.npy
 logs
+models/gpt2-poetries/pytorch_model.bin
