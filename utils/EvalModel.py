@@ -6,5 +6,5 @@ def EvalModel(modelname, input_words, author_name=None, out_lines_number=None, t
     model = os.path.join("models", modelname)
     tokenizer = AutoTokenizer.from_pretrained("GroNLP/gpt2-small-italian")
     pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
-    result = pipe(input_words)[0]['generated_text']
+    result = pipe(input_words)[0]['generated_text'].replace(" .", ".")
     return result
