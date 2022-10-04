@@ -1,5 +1,5 @@
 numpy
 tensorflow
 sklearn
-tensorflow
+transformers
 ByteSplitter
