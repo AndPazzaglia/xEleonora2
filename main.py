@@ -27,8 +27,10 @@ input_words = st.sidebar.text_input('Write initial words of the poetry', value="
 # temperature = st.sidebar.slider('Select the model temperature (higher leads to more variable results)', min_value=0.0, max_value=1.0, value=0.5, step=0.1)
 
 # load model from splitted model
-# modelpath = os.path.join("models", "gpt2-poetries", "pytorch_model.bin")
-# bysp.combine_file(modelpath)
+with st.spinner('Loading model...'):
+    modelpath = os.path.join("models", "gpt2-poetries", "pytorch_model.bin")
+    bysp.combine_file(modelpath)
+st.success('Done!')
 
 if st.sidebar.button('Run model'):
     # load model
